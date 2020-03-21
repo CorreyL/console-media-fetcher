@@ -4,8 +4,6 @@ This repository contains code for a script to help users automatically download
 media (i.e. videos and photos) uploaded to [Twitter](https://www.twitter.com/)
 via their game consoles.
 
-## Installation
-
 ## Twitter Developer API Account
 
 A [Twitter Developer API Account](https://developer.twitter.com/en.html) is
@@ -22,6 +20,8 @@ access_token_secret: # Twitter Access Token Secret
 api_key: # Twitter API Key
 api_secret_key: # Twitter API Secret Key
 ```
+
+## Installation
 
 This script was created on `Python 3.7.4`.
 
