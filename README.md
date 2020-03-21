@@ -55,3 +55,12 @@ python main.py
 ```
 
 And all the media files from the specified Twitter account will be downloaded.
+
+## Formatting Code
+
+This codebase uses [`black`](https://black.readthedocs.io/en/stable/) formatter
+to ensure code consistency across the `.py` files:
+
+```bash
+black main.py -l 80
+```
