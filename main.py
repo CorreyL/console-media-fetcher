@@ -1,5 +1,6 @@
 import tweepy
 import yaml
+import urllib.request
 from pytz import timezone
 
 with open("tokens.yaml") as tokens:
@@ -35,6 +36,14 @@ def main():
                     "file_type": file_type,
                 }
             )
+
+    for obj in media_files:
+        media_url = obj["media_url"]
+        file_name = obj["file_name"]
+        file_type = obj["file_type"]
+        urllib.request.urlretrieve(
+            media_url, f"{file_name}.{file_type}",
+        )
 
 
 if __name__ == "main":
