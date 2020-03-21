@@ -28,6 +28,25 @@ def main():
         if len(media) > 0:
             media_url = media[0]["media_url"]
             file_type = str(media_url).split(".")[-1]
+            # The media_url will have `video` as part of the path if the file is
+            # a video
+            if "video" in media_url:
+                # Traverse the structure of the `extended_entities` object of
+                # the tweet to get the different processed video sizes
+                processed_videos = (
+                    tweet.extended_entities.get("media")[0]
+                    .get("video_info")
+                    .get("variants")
+                )
+                sorted_videos = sorted(
+                    processed_videos, key=lambda obj: obj.get("bitrate", 0),
+                )
+                # TODO Make this a script argument that can be changed so that
+                # the different video qualities can be selected
+                highest_bitrate_video = sorted_videos[-1]
+                media_url = highest_bitrate_video['url']
+                # Parse the string such as `video/mp4`
+                file_type = highest_bitrate_video['content_type'].split('/')[-1]
             media_files.append(
                 {
                     "media_url": media_url,
