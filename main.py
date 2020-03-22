@@ -13,11 +13,27 @@ api = tweepy.API(auth)
 
 public_tweets = api.home_timeline()
 
+supported_platforms = [
+    "NintendoSwitch",
+    "Playstation4",
+]
+
 
 def main():
     media_files = []
 
     for tweet in public_tweets:
+        # Retrieve the hashtags to know what directories to sort the downloaded
+        # media in
+        hashtags = tweet.entities.get("hashtags", [])
+        hashtags_text = [obj["text"] for obj in hashtags]
+        platform = "UnknownPlatform"
+        # Iterate through the hashtags to find out what platform the media was
+        # uploaded from
+        for hashtag in hashtags_text:
+            if hashtag in supported_platforms:
+                platform = hashtag
+                break
         date = tweet.created_at.astimezone()
         # Replace `:` characters with `.` to ensure the file name is usable on
         # Windows machines
@@ -53,6 +69,7 @@ def main():
                     "datetime_tweeted": date,
                     "file_name": reformatted_date,
                     "file_type": file_type,
+                    "platform": platform,
                 }
             )
 
