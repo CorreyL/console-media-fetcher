@@ -87,10 +87,13 @@ def main():
         destination = f"./{destination_folder_name}/{platform}"
         if not os.path.exists(destination):
             os.mkdir(destination)
-        urllib.request.urlretrieve(
-            media_url,
-            f"./{destination_folder_name}/{platform}/{file_name}.{file_type}",
+        download = (
+            f"./{destination_folder_name}/{platform}/{file_name}.{file_type}"
         )
+        if not os.path.exists(download):
+            urllib.request.urlretrieve(
+                media_url, download,
+            )
 
 
 if __name__ == "__main__":
