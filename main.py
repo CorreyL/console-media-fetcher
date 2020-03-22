@@ -19,6 +19,8 @@ supported_platforms = [
     "Playstation4",
 ]
 
+destination_folder_name = "media"
+
 
 def main():
     media_files = []
@@ -74,15 +76,20 @@ def main():
                 }
             )
 
+    if not os.path.exists(destination_folder_name):
+        os.mkdir(destination_folder_name)
+
     for obj in media_files:
         media_url = obj["media_url"]
         file_name = obj["file_name"]
         file_type = obj["file_type"]
         platform = obj["platform"]
-        if not os.path.exists(platform):
-            os.mkdir(platform)
+        destination = f"./{destination_folder_name}/{platform}"
+        if not os.path.exists(destination):
+            os.mkdir(destination)
         urllib.request.urlretrieve(
-            media_url, f"./{platform}/{file_name}.{file_type}",
+            media_url,
+            f"./{destination_folder_name}/{platform}/{file_name}.{file_type}",
         )
 
 

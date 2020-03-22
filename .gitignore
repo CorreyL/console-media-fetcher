@@ -3,3 +3,4 @@ venv/
 .vscode/
 
 tokens.yaml
+media/
