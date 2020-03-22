@@ -14,10 +14,10 @@ api = tweepy.API(auth)
 
 public_tweets = api.home_timeline()
 
-supported_platforms = [
-    "NintendoSwitch",
-    "Playstation4",
-]
+supported_platforms = {
+    "NintendoSwitch": "NintendoSwitch",
+    "PS4share": "Playstation4",
+}
 
 destination_folder_name = "media"
 
@@ -35,7 +35,7 @@ def main():
         # uploaded from
         for hashtag in hashtags_text:
             if hashtag in supported_platforms:
-                platform = hashtag
+                platform = supported_platforms[hashtag]
                 break
         date = tweet.created_at.astimezone()
         # Replace `:` characters with `.` to ensure the file name is usable on
