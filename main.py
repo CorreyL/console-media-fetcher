@@ -60,9 +60,9 @@ def main():
                 # TODO Make this a script argument that can be changed so that
                 # the different video qualities can be selected
                 highest_bitrate_video = sorted_videos[-1]
-                media_url = highest_bitrate_video['url']
+                media_url = highest_bitrate_video["url"]
                 # Parse the string such as `video/mp4`
-                file_type = highest_bitrate_video['content_type'].split('/')[-1]
+                file_type = highest_bitrate_video["content_type"].split("/")[-1]
             media_files.append(
                 {
                     "media_url": media_url,
