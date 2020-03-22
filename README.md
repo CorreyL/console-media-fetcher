@@ -4,6 +4,8 @@ This repository contains code for a script to help users automatically download
 media (i.e. videos and photos) uploaded to [Twitter](https://www.twitter.com/)
 via their game consoles.
 
+![](./img/demo.gif)
+
 ## Twitter Developer API Account
 
 A [Twitter Developer API Account](https://developer.twitter.com/en.html) is
